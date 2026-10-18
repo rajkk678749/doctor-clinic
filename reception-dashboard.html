@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reception Dashboard | Clinic Queue</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="page-shell dashboard-shell">
+      <section class="queue-card dashboard-card" aria-labelledby="dashboard-title">
+        <header class="dashboard-header reception-header">
+          <div>
+            <p class="eyebrow">RECEPTION DASHBOARD</p>
+            <h1 id="dashboard-title"><span id="doctorName"></span></h1>
+            <p id="clinicName" class="dashboard-subtitle"></p>
+            <p id="receptionName" class="dashboard-subtitle"></p>
+          </div>
+          <button type="button" id="logoutBtn" class="text-btn">Log out</button>
+        </header>
+
+        <section class="reception-summary" aria-label="Clinic and queue status">
+          <div class="reception-summary-item">
+            <span>Clinic hours</span>
+            <strong id="clinicHours"></strong>
+          </div>
+          <div class="reception-summary-item">
+            <span>Queue status</span>
+            <strong id="queueStatus" class="queue-badge stopped">Stopped</strong>
+          </div>
+        </section>
+
+        <section class="patient-share-section" aria-labelledby="patient-share-title">
+          <div>
+            <h2 id="patient-share-title">Patient sign-up link</h2>
+            <p>Share this link or QR code so patients can join the queue.</p>
+          </div>
+          <div class="patient-share-content">
+            <div class="patient-share-link">
+              <a id="patientJoinLink" href="patient.html">Open patient sign-up</a>
+              <button type="button" id="copyPatientLinkBtn" class="secondary-btn">Copy link</button>
+              <p id="patientLinkMessage" class="status-text" aria-live="polite"></p>
+            </div>
+            <div class="patient-qr-wrap">
+              <div id="patientQrCode" class="patient-qr-code" aria-label="QR code for patient sign-up"></div>
+              <p id="patientQrMessage" class="status-text" aria-live="polite"></p>
+            </div>
+          </div>
+          <p class="demo-sharing-notice">Demo mode: queue data is stored in this browser only. Patients on other devices cannot join this queue until shared backend storage is configured.</p>
+        </section>
+
+        <section class="patients-section" aria-labelledby="patients-title">
+          <button type="button" id="patientCountToggle" class="patient-count-panel" aria-expanded="false" aria-controls="patientListPanel">
+            <div>
+              <h2 id="patients-title" class="patient-count-label">Patients in queue</h2>
+              <p id="patientCount" class="patient-count" aria-live="polite">0</p>
+            </div>
+            <span class="patient-count-hint">Click to manage queue</span>
+          </button>
+          <div id="patientListPanel" class="patient-list-panel hidden">
+            <div id="patientList" class="patient-list"></div>
+          </div>
+          <p id="queueMessage" class="status-text" aria-live="polite"></p>
+        </section>
+      </section>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="patient-link.js"></script>
+    <script src="reception-dashboard.js"></script>
+  </body>
+</html>

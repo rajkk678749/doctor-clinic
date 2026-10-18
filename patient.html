@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Join the Queue | Clinic Queue</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <section class="queue-card patient-join-card" aria-labelledby="patient-page-title">
+        <header class="card-header">
+          <p class="eyebrow">PATIENT QUEUE</p>
+          <h1 id="patient-page-title">Join the queue</h1>
+          <p id="patientClinicName" class="patient-clinic-name"></p>
+          <p id="patientQueueStatus" class="status-text" aria-live="polite"></p>
+        </header>
+
+        <form id="patientJoinForm" class="patient-join-form">
+          <label class="field">
+            <span>Your name</span>
+            <input type="text" id="patientName" name="patientName" autocomplete="name" maxlength="80" required />
+          </label>
+          <label class="field">
+            <span>Mobile number</span>
+            <input type="tel" id="patientMobile" name="patientMobile" autocomplete="tel" inputmode="tel" maxlength="20" required />
+          </label>
+          <button type="submit" id="joinQueueBtn" class="submit-btn">Join queue</button>
+        </form>
+
+        <section id="patientJoinConfirmation" class="patient-join-confirmation hidden" aria-live="polite"></section>
+        <section id="patientQueueTracking" class="patient-queue-tracking hidden" aria-live="polite">
+          <h2>Your queue status</h2>
+          <p id="patientTokenStatus"></p>
+          <p id="currentServingPatient"></p>
+          <p id="patientWaitEstimate"></p>
+          <button type="button" id="patientArrivedBtn" class="secondary-btn">I have arrived</button>
+          <p id="patientReminder" class="patient-reminder hidden"></p>
+          <div id="patientMessagePreviews" class="patient-message-previews hidden">
+            <p><strong>SMS message preview:</strong> <span id="patientSmsPreview"></span></p>
+            <p><strong>WhatsApp message preview:</strong> <span id="patientWhatsappPreview"></span></p>
+            <p class="patient-delivery-notice">These are previews only; this demo does not send SMS or WhatsApp messages.</p>
+          </div>
+          <p id="patientTrackingMessage" class="status-text" aria-live="polite"></p>
+        </section>
+        <p class="demo-sharing-notice">SMS and WhatsApp messages are previews only until a messaging backend is configured.</p>
+        <p class="demo-sharing-notice">Demo mode: this queue is stored in the clinic browser only. This page must be opened in that same browser to add a patient.</p>
+        <p id="patientJoinMessage" class="status-text" aria-live="polite"></p>
+      </section>
+    </main>
+
+    <script src="patient.js"></script>
+  </body>
+</html>

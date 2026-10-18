@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register Clinic Queue</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="top-nav" aria-label="Main navigation">
+      <a class="nav-link active" href="register.html">Register</a>
+      <a class="nav-link" href="login.html">Login</a>
+    </div>
+
+    <main class="page-shell">
+      <section class="queue-card" aria-labelledby="form-title">
+        <div class="card-header">
+          <h1 id="form-title">Register Clinic Queue</h1>
+        </div>
+
+        <div id="sessionAlert" class="status-text hidden" aria-live="polite"></div>
+        <button type="button" id="reAuthBtn" class="secondary-btn hidden">Re-enter Details</button>
+
+        <form id="clinicQueueForm" novalidate>
+          <div class="field-grid three-col">
+            <label class="field">
+              <span>Doctor Name <em>*</em></span>
+              <input type="text" name="doctorName" placeholder="Enter doctor name" required />
+            </label>
+
+            <label class="field">
+              <span>Mobile Number <em>*</em></span>
+              <input type="tel" id="mobileNumber" name="mobileNumber" placeholder="Enter mobile number" required />
+            </label>
+            <label class="field">
+              <span>Email Address <em>*</em></span>
+              <input type="email" name="email" placeholder="Enter email address" autocomplete="email" required />
+            </label>
+          </div>
+
+          <div class="field-grid two-col">
+            <label class="field">
+              <span>Mobile OTP <em>*</em></span>
+              <input type="text" id="registrationOtp" name="registrationOtp" placeholder="Enter 6-digit OTP" maxlength="6" inputmode="numeric" autocomplete="one-time-code" required />
+            </label>
+            <div class="field otp-action">
+              <span aria-hidden="true">&nbsp;</span>
+              <button type="button" id="sendRegistrationOtpBtn" class="secondary-btn">Send OTP</button>
+            </div>
+          </div>
+          <div id="recaptcha-container"></div>
+          <p id="registrationStatus" class="status-text" aria-live="polite"></p>
+
+          <div class="field-grid two-col">
+            <label class="field">
+              <span>Clinic Name <em>*</em></span>
+              <input type="text" name="clinicName" placeholder="Enter clinic name" required />
+            </label>
+
+            <label class="field">
+              <span>Specialization <em>*</em></span>
+              <input type="text" name="specialization" placeholder="Enter specialization" required />
+            </label>
+          </div>
+
+          <div class="field-grid three-col">
+            <label class="field">
+              <span>Average Consultation Time</span>
+              <input
+                type="text"
+                name="consultationTime"
+                list="consultationTimeOptions"
+                value="10 Minutes"
+                placeholder="Enter consultation minutes"
+              />
+              <datalist id="consultationTimeOptions">
+                <option value="10 Minutes"></option>
+                <option value="15 Minutes"></option>
+                <option value="20 Minutes"></option>
+                <option value="25 Minutes"></option>
+                <option value="30 Minutes"></option>
+              </datalist>
+            </label>
+
+            <label class="field">
+              <span>Queue Start Time</span>
+              <select name="startTime">
+                <option>09:00 AM</option>
+                <option>09:30 AM</option>
+                <option>10:00 AM</option>
+                <option>11:00 AM</option>
+                <option>12:00 PM</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>Queue End Time</span>
+              <select name="endTime">
+                <option>06:00 PM</option>
+                <option>07:00 PM</option>
+                <option>08:00 PM</option>
+                <option>09:00 PM</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="toggle-group">
+            <label class="checkbox-row">
+              <input type="checkbox" id="receptionToggle" checked />
+              <span>Enable Reception Login</span>
+            </label>
+          </div>
+
+          <div id="receptionFields" class="reception-fields">
+            <div class="field-grid two-col">
+              <label class="field">
+                <span>Reception Name</span>
+                <input type="text" name="receptionName" placeholder="Enter reception name" />
+              </label>
+
+              <label class="field">
+                <span>Reception Mobile</span>
+                <input type="tel" name="receptionMobile" placeholder="Enter reception mobile" />
+              </label>
+            </div>
+          </div>
+
+          <label class="checkbox-row terms-row">
+            <input type="checkbox" name="terms" required checked />
+            <span>I Agree to Terms</span>
+          </label>
+
+          <button type="submit" class="submit-btn">Register</button>
+        </form>
+      </section>
+    </main>
+
+    <script src="firebase-config.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

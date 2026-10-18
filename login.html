@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clinic Queue Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="top-nav" aria-label="Main navigation">
+      <a class="nav-link" href="register.html">Register</a>
+      <a class="nav-link active" href="login.html">Login</a>
+    </div>
+
+    <main class="page-shell">
+      <section class="queue-card" aria-labelledby="login-title">
+        <div class="card-header">
+          <h1 id="login-title">Clinic Login</h1>
+        </div>
+
+        <div id="loginSessionAlert" class="status-text hidden" aria-live="polite"></div>
+        <button type="button" id="loginReAuthBtn" class="secondary-btn hidden">Re-enter Details</button>
+
+        <div id="recaptcha-container"></div>
+
+        <div class="login-panel">
+          <div id="savedInfo" class="saved-info hidden"></div>
+
+          <form id="loginForm" novalidate>
+            <label class="field">
+              <span>Login as</span>
+              <select id="loginRole" name="loginRole">
+                <option value="doctor">Doctor</option>
+                <option value="receptionist">Receptionist</option>
+              </select>
+            </label>
+
+            <div class="field-grid two-col">
+              <label class="field">
+                <span id="loginNameLabel">Doctor Name</span>
+                <input type="text" id="doctorName" name="doctorName" placeholder="Enter your doctor name" required />
+              </label>
+
+              <label class="field">
+                <span>Mobile Number</span>
+                <input type="tel" id="mobileNumber" name="mobileNumber" placeholder="Enter registered mobile" required />
+              </label>
+            </div>
+
+            <div class="field">
+              <span>OTP</span>
+              <input type="text" id="otpCode" name="otpCode" placeholder="Enter 6-digit OTP" maxlength="6" inputmode="numeric" />
+            </div>
+
+            <div class="field-grid two-col">
+              <button type="button" id="sendOtpBtn" class="secondary-btn">Send OTP</button>
+              <button type="submit" class="submit-btn">Login</button>
+            </div>
+          </form>
+
+          <div id="loginStatus" class="status-text" aria-live="polite"></div>
+        </div>
+      </section>
+    </main>
+
+    <script src="firebase-config.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+    <script src="login.js"></script>
+  </body>
+</html>
